@@ -134,13 +134,13 @@ body {
         /* --- Asosiy Kontent --- */
         .container {
             display: flex;
-            gap: 40px;
+            gap: 30px;
             flex-wrap: wrap;
             justify-content: center;
             padding: 20px;
             z-index: 10;
             position: relative;
-            max-width: 1400px;
+            max-width: 1800px;
             margin: 0 auto;
         }
 
@@ -153,7 +153,7 @@ body {
             box-shadow: 0 0 40px rgba(129, 236, 174, 0.5);
             color: #fff;
             overflow: hidden;
-            width: 420px;
+            width: 400px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
@@ -422,6 +422,17 @@ body {
                 height: 20px;
             }
         }
+
+        /* --- Katta ekranda 4 ta profilni yonma-yon ko'rsatish --- */
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1800px;
+            }
+            
+            .profile-card {
+                width: 400px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -505,7 +516,8 @@ body {
                 </div>
             </a>
         </div>
-                <!-- Profil 3 -->
+        
+        <!-- Profil 3 -->
         <div class="profile-card">
             <a href="https://bobojons.netlify.app/" target="_blank">
                 <div class="profile-header">
@@ -536,16 +548,17 @@ body {
                 </div>
             </a>
         </div>
-                        <!-- Profil 4 -->
+        
+        <!-- Profil 4 -->
         <div class="profile-card">
             <a href="https://asrorcodex.netlify.app/" target="_blank">
                 <div class="profile-header">
-                    <img src="asrorbek.jpg" alt="Sanjarbek rasmi">
+                    <img src="asrorbek.jpg" alt="Asrorbek rasmi">
                     <h2>Asrorbek</h2>
                     <p class="profile-title">Frontend Dasturchi</p>
                 </div>
                 <p class="profile-bio">
-                    Zamonaviy veb-interfeyslar yarat`ish bo'yicha mutaxassis. Vue.js, TypeScript va SASS kabi zamonaviy texnologiyalarni qo'llash orqali foydalanuvchi tajribasini yaxshilashga intiladi.
+                    Zamonaviy veb-interfeyslar yaratish bo'yicha mutaxassis. Vue.js, TypeScript va SASS kabi zamonaviy texnologiyalarni qo'llash orqali foydalanuvchi tajribasini yaxshilashga intiladi.
                 </p>
                 <div class="skills">
                     <span class="skill-tag">Vue.js</span>
@@ -613,15 +626,48 @@ body {
 
         // --- Dasturlash Logolari Yog'ishi Animatsiyasi ---
         const logoRainContainer = document.getElementById('logo-rain-container');
-        const logos = ['</>', 'JS', 'PY', '⚛️', 'Vue', 'Git', '🐳', 'AWS', '🐍', 'SASS', 'TS', 'Node', 'PHP', '🅰️', '📱', '🌐', '🔧', '💻'];
+        const programmingLogos = [
+            // JavaScript va uning frameworklari
+            '<i class="fab fa-js-square" style="color: #f7df1e;"></i>',
+            '<i class="fab fa-react" style="color: #61dafb;"></i>',
+            '<i class="fab fa-vuejs" style="color: #4fc08d;"></i>',
+            '<i class="fab fa-angular" style="color: #dd0031;"></i>',
+            
+            // Backend tillari
+            '<i class="fab fa-node-js" style="color: #339933;"></i>',
+            '<i class="fab fa-python" style="color: #3776ab;"></i>',
+            '<i class="fab fa-php" style="color: #777bb4;"></i>',
+            '<i class="fab fa-java" style="color: #007396;"></i>',
+            
+            // Database
+            '<i class="fas fa-database" style="color: #336791;"></i>',
+            '<i class="fas fa-leaf" style="color: #326ce5;"></i>',
+            
+            // Version control
+            '<i class="fab fa-git-alt" style="color: #f05032;"></i>',
+            '<i class="fab fa-github" style="color: #333;"></i>',
+            
+            // CSS va uning frameworklari
+            '<i class="fab fa-css3-alt" style="color: #1572b6;"></i>',
+            '<i class="fab fa-sass" style="color: #cc6699;"></i>',
+            
+            // Boshqa texnologiyalar
+            '<i class="fab fa-docker" style="color: #2496ed;"></i>',
+            '<i class="fab fa-aws" style="color: #ff9900;"></i>',
+            '<i class="fab fa-html5" style="color: #e34f26;"></i>',
+            '<i class="fab fa-bootstrap" style="color: #563d7c;"></i>',
+            '<i class="fab fa-wordpress" style="color: #21759b;"></i>',
+            '<i class="fab fa-laravel" style="color: #ff2d20;"></i>',
+            '<i class="fab fa-symfony" style="color: #000;"></i>'
+        ];
 
         function createLogo() {
             const logo = document.createElement('div');
             logo.classList.add('falling-logo');
             
             // Tasodifiy logo tanlash
-            const randomLogo = logos[Math.floor(Math.random() * logos.length)];
-            logo.textContent = randomLogo;
+            const randomLogo = programmingLogos[Math.floor(Math.random() * programmingLogos.length)];
+            logo.innerHTML = randomLogo;
             
             // Tasodifiy boshlang'ich pozitsiya (x o'qi)
             logo.style.left = Math.random() * 100 + '%';
@@ -631,7 +677,8 @@ body {
             logo.style.animationDuration = duration + 's';
             
             // Tasodifiy o'lcham
-            logo.style.fontSize = Math.random() * 1.5 + 1 + 'rem';
+            const size = Math.random() * 1.5 + 1; // 1 dan 2.5 gacha
+            logo.style.fontSize = size + 'rem';
 
             logoRainContainer.appendChild(logo);
 
